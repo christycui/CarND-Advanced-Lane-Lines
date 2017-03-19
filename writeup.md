@@ -118,7 +118,7 @@ To track lane lines throughout the video, I created Lane class to keep track of 
 Then I calculate the curvations given the line fit. If any of the curves is smaller than 100 meters, it means it is a bad dectection and throw away. If the two lanes are somewhat parallel (difference smaller than 600 when curved), it means the detection of lanes is valid and save the fits to current_fit attribute of the lane objects. Lastly, I draw the lanes back down to the original image.
 
 Here is the output of the project video:
-![alt text][video1]
+![alt text][video1] (/lanes.mp4)
 
 ---
 
@@ -126,7 +126,7 @@ Here is the output of the project video:
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-One problem I faced is that, no matter what parameters I choose in perspective transform, individual frame lane detection does not perform consistent, meaning it works great for some frames but not for others. This is why smoothing in a video is so important. 
+One problem I faced is that, no matter what parameters I choose in perspective transform, individual frame lane detection does not perform consistently, meaning it works great for some frames but not for others. This is why smoothing is so important for video performance. 
 
 I implemented smoothing by judging the returned curvations - does the magnitude of curvation makes sense? If it's less than 100 meters, it probably means something was not detected correctly, and that this frame should rely on previous tested detections, rather than the result from this frame. I kept 5 most recent valid fits and that worked well for most of the frames in the project video.
 
