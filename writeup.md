@@ -101,9 +101,11 @@ The second approach (code cell 596) is used when lanes were found in the previou
 
 This was accomplished in code cell 635, 'calculate_curvature()'. First I set meter per pixel in x and y dimensions. Then using the left_fit and right_fit coefficients and assuming the bottom of the image to be the radius of the curvature, I was able to find out the real-world radius of the curve using the curvature formula as presented in the lesson.
 
+To find out the position of the vehicle, I used the left and right lane line fits to find out the middle of the lane at the bottom of the image. Assuming the camera is mounted in the center, the center of the image should be the middle of the road. So, the difference between the center of the image and the middle of the detected lanes is the offset of the vehicle.
+
 ####6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in code cell 635 in 'draw_lanes()'. I used inputs left_fit and right_fit to calculate the x values of lane lines. Then recast the left and right lane points onto the undistorted image. I also used 'cv2.fillPoly()' to color fill the lane area. Here is an example of my result on a test image:
+I implemented this step in code cell 635 in 'draw_lanes()'. I used inputs left_fit and right_fit to calculate the x values of lane lines. Then recast the left and right lane points onto the undistorted image. I also used 'cv2.fillPoly()' to color fill the lane area. I also wrote the text of the measurements on to the image. Here is an example of my result on a test image:
 
 ![alt text][image6]
 
